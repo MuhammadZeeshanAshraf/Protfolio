@@ -431,4 +431,63 @@ html {
   }
 }
 
+.project-img-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  animation: imgWrapperAnim 1s forwards;
+  overflow: hidden scroll;
+}
+
+@keyframes imgWrapperAnim {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.project-img {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 7rem 20rem;
+  opacity: 0.9;
+  transform-origin: top center;
+  animation: imgAnim 1s 1s both;
+}
+
+@keyframes imgAnim {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.project-hide-btn {
+  position: fixed;
+  top: 5rem;
+  right: 5rem;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  z-index: 10;
+  transform: scale(0);
+  visibility: hidden;
+}
+
+.change.project-hide-btn {
+  transform: scale(1);
+  visibility: visible;
+  transition: transform 0.5s;
+}
+
 /* End of Section 3 */

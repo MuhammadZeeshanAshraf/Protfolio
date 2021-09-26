@@ -97,6 +97,8 @@ Array.from(aboutMeTextContent).forEach((char) => {
 // End About Me Text
 
 // Projects
+const container = document.querySelector(".container");
+const projectHideBtn = document.querySelector(".project-hide-btn");
 const projects = document.querySelectorAll(".project");
 
 projects.forEach((project) => {
@@ -109,5 +111,29 @@ projects.forEach((project) => {
   project.addEventListener("mouseleave", () => {
     project.firstElementChild.style.top = "2rem";
   });
+
+  // Big Project Image
+  project.addEventListener("click", () => {
+    const bigImgWrapper = document.createElement("div");
+    bigImgWrapper.className = "project-img-wrapper";
+    container.appendChild(bigImgWrapper);
+    const bigImg = document.createElement("img");
+    const imgPath = project.firstElementChild.getAttribute("src").split(".")[0];
+    bigImg.className = "project-img";
+    bigImg.setAttribute("src", `${imgPath}-big.jpg`);
+    bigImgWrapper.appendChild(bigImg);
+    document.body.style.overflow = "hidden";
+
+    projectHideBtn.classList.add("change");
+
+    projectHideBtn.onclick = () => {
+      projectHideBtn.classList.remove("change");
+      bigImgWrapper.remove();
+      document.body.style.overflowY = "scroll";
+    };
+  });
+
+  // End of Big Project Image
 });
+
 // End of Projects
