@@ -194,3 +194,45 @@ document.querySelectorAll(".service-btn").forEach((service) => {
   });
 });
 // End of Section 4
+
+// Section 5
+const formHeading = document.querySelector(".form-heading");
+const formInputs = document.querySelectorAll(".contact-form-input");
+
+formInputs.forEach((input) => {
+  input.addEventListener("focus", () => {
+    formHeading.style.opacity = "0";
+    setTimeout(() => {
+      formHeading.textContent = `Your ${input.placeholder}`;
+      formHeading.style.opacity = "1";
+    }, 300);
+  });
+
+  input.addEventListener("blur", () => {
+    formHeading.style.opacity = "0";
+    setTimeout(() => {
+      formHeading.textContent = `Let's Talk`;
+      formHeading.style.opacity = "1";
+    }, 300);
+  });
+});
+
+// Slide Show
+const sildeshow = document.querySelector(".slideshow");
+setInterval(() => {
+  const firstIcon = sildeshow.firstElementChild;
+  firstIcon.classList.add("faded-out");
+  const thirdIcon = sildeshow.children[3];
+  thirdIcon.classList.add("light");
+  thirdIcon.previousElementSibling.classList.remove("light");
+
+  setTimeout(() => {
+    sildeshow.removeChild(firstIcon);
+    sildeshow.appendChild(firstIcon);
+    setTimeout(() => {
+      firstIcon.classList.remove("faded-out");
+    }, 500);
+  }, 500);
+}, 3000);
+// End of Slide Show
+// End of Section 5
